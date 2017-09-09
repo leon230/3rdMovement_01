@@ -30,6 +30,8 @@ public class GameManager {
     }
     #endregion
 
+    public event System.Action<Player> OnLocalPlayerJoined;
+
     private InputController mInputController;
     public InputController inputController
     {
@@ -42,4 +44,20 @@ public class GameManager {
             return mInputController;
         }
     }
+
+    private Player mLocalPlayer;
+    public Player localPlayer
+    {
+        get
+        {return mLocalPlayer;}
+
+        set {
+            mLocalPlayer = value;
+            if (OnLocalPlayerJoined != null)
+            {
+                OnLocalPlayerJoined(mLocalPlayer);
+            }
+        }
+    }
+
 }

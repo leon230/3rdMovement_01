@@ -34,6 +34,7 @@ public class Player : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
         playerInput = GameManager.instance.inputController;
+        GameManager.instance.localPlayer = this;
 	}
 	
 	// Update is called once per frame
