@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class Health : Destructable {
 
+    [SerializeField] float inSeconds;
+
     public override void Die()
     {
         base.Die();
 
-        Debug.Log("Died...");
+        //Debug.Log("Died...");
+        GameManager.instance.respawner.Despawn(gameObject, inSeconds);
     
+    }
+
+    private void OnEnable()
+    {
+        Reset();
     }
 
     public override void TakeDamage(float amount)

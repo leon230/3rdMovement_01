@@ -269,6 +269,50 @@ Transform:
   m_Father: {fileID: 2004536966}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &680573268
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 680573269}
+  - component: {fileID: 680573270}
+  m_Layer: 0
+  m_Name: CrossHair
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &680573269
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 680573268}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.05, y: 5.42, z: 10.19}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1585388497}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &680573270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 680573268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 288ee9e8012c5404da51922a565d1dbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 2800000, guid: cbdcb36ccb386a645a304241aa4ce632, type: 3}
+  size: 32
+  maxAngle: 100
+  minAngle: -100
 --- !u!1 &760355493
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,8 +653,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   mouseControl:
-    damping: {x: 5, y: 0}
-    sensitivity: {x: 5, y: 0}
+    damping: {x: 10, y: 10}
+    sensitivity: {x: 10, y: 10}
 --- !u!4 &1585388497
 Transform:
   m_ObjectHideFlags: 0
@@ -624,6 +668,7 @@ Transform:
   - {fileID: 2062447644}
   - {fileID: 1985303890}
   - {fileID: 45688807}
+  - {fileID: 680573269}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -18,8 +18,10 @@ public class GameManager {
             {
                 Debug.Log("Assigning GameManager");
                 mInstance = new GameManager();
-                mInstance.gameObject = new GameObject("_gameManager");
+                mInstance.gameObject = new GameObject(gameConstants.gameManager);
                 mInstance.gameObject.AddComponent<InputController>();
+                mInstance.gameObject.AddComponent<Timer>();
+                mInstance.gameObject.AddComponent<Respawner>();
             }
             else
             {
@@ -60,6 +62,34 @@ public class GameManager {
                 OnLocalPlayerJoined(mLocalPlayer);
             }
         }
+    }
+
+    private Timer mTimer;
+    public Timer timer
+    {
+        get
+        {
+            if (mTimer == null)
+            {
+                mTimer = gameObject.GetComponent<Timer>();
+            }
+            return mTimer;
+        }
+
+    }
+
+    private Respawner mRespawner;
+    public Respawner respawner
+    {
+        get
+        {
+            if (mRespawner == null)
+            {
+                mRespawner = gameObject.GetComponent<Respawner>();
+            }
+            return mRespawner;
+        }
+
     }
 
 }

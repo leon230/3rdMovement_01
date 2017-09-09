@@ -6,5 +6,6 @@ public static class gameConstants {
 
     public const string cameraLookTarget = "cameraLookTarget";
     public const string muzzle = "Muzzle";
+    public const string gameManager = "_gameManager";
 
 }
