@@ -6,14 +6,14 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
     [System.Serializable]
-    public class MouseImput
+    public class MouseInput
     {
         public Vector2 damping;
         public Vector2 sensitivity;
     }
 
     [SerializeField] float speed;
-    [SerializeField] MouseImput mouseControl;
+    [SerializeField] MouseInput mouseControl;
 
     private MoveController mMoveController;
     public MoveController moveController
@@ -30,6 +30,7 @@ public class Player : MonoBehaviour {
 
 
     InputController playerInput;
+    Vector2 mouseInput;
 
 	// Use this for initialization
 	void Awake () {
@@ -41,5 +42,11 @@ public class Player : MonoBehaviour {
 	void Update () {
         Vector2 direction = new Vector2(playerInput.Vertical * speed, playerInput.Horizontal * speed);
         moveController.Move(direction);
+
+        //mouseInput.x = playerInput.MouseInput.x;
+        mouseInput.x = Mathf.Lerp(mouseInput.x, playerInput.MouseInput.x, 1f / mouseControl.damping.x);
+
+        transform.Rotate(Vector3.up * mouseInput.x * mouseControl.sensitivity.x);
+
     }
 }
