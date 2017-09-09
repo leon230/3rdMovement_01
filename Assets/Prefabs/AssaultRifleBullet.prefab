@@ -138,9 +138,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a31547f4682407740b838ddedd5f14be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 50
   timeToLive: 5
-  damage: 10
+  damage: 1
 --- !u!136 &136698179881033720
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -148,7 +148,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1745444791730790}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2

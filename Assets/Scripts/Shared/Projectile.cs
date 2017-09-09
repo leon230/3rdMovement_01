@@ -21,6 +21,15 @@ public class Projectile : MonoBehaviour {
 
     private void OnTriggerEnter(Collider collider)
     {
-        Debug.Log("Hit..." + collider.name);
+        var destructable = collider.GetComponent<Destructable>();
+
+        if (destructable == null)
+        {
+            return;
+        }
+
+        destructable.TakeDamage(damage);
+
+
     }
 }
