@@ -2,18 +2,43 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(MoveController))]
 public class Player : MonoBehaviour {
 
-    public InputController inputController;
+    [System.Serializable]
+    public class MouseImput
+    {
+        public Vector2 damping;
+        public Vector2 sensitivity;
+    }
+
+    [SerializeField] float speed;
+    [SerializeField] MouseImput mouseControl;
+
+    private MoveController mMoveController;
+    public MoveController moveController
+    {
+        get
+        {
+            if (mMoveController == null)
+            {
+                mMoveController = GetComponent<MoveController>();
+            }
+            return mMoveController;
+        }
+    }
+
+
+    InputController playerInput;
 
 	// Use this for initialization
-	void Start () {
-        inputController = GameManager.instance.inputController;
+	void Awake () {
+        playerInput = GameManager.instance.inputController;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log("Horizontal: " + inputController.MouseInput.x);
-        Debug.Log("Vertical: " + inputController.MouseInput.y);
+        Vector2 direction = new Vector2(playerInput.Vertical * speed, playerInput.Horizontal * speed);
+        moveController.Move(direction);
     }
 }
