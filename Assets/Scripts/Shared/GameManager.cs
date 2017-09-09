@@ -8,6 +8,7 @@ public class GameManager {
     #region Singleton
     private GameObject gameObject;
 
+    //TODO rework singletonPattern
     private static GameManager mInstance;
     public static GameManager instance
     {
@@ -15,13 +16,14 @@ public class GameManager {
         {
             if(mInstance == null)
             {
+                Debug.Log("Assigning GameManager");
                 mInstance = new GameManager();
                 mInstance.gameObject = new GameObject("_gameManager");
                 mInstance.gameObject.AddComponent<InputController>();
             }
             else
             {
-                Debug.Log("GameManager already defined");
+                //Debug.Log("GameManager already defined");
             }
             
             return mInstance;
