@@ -12,7 +12,11 @@ public class Player : MonoBehaviour {
         public Vector2 sensitivity;
     }
 
-    [SerializeField] float speed;
+    [SerializeField] float runSpeed;
+    [SerializeField] float walkSpeed;
+    [SerializeField] float crouchSpeed;
+    [SerializeField] float sprintSpeed;
+
     [SerializeField] MouseInput mouseControl;
 
     private MoveController mMoveController;
@@ -52,10 +56,16 @@ public class Player : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        Vector2 direction = new Vector2(playerInput.Vertical * speed, playerInput.Horizontal * speed);
-        moveController.Move(direction);
+	void Update ()
+    {
 
+        Move();
+        LookControl();
+
+    }
+
+    private void LookControl()
+    {
         //mouseInput.x = playerInput.MouseInput.x;
         mouseInput.x = Mathf.Lerp(mouseInput.x, playerInput.MouseInput.x, 1f / mouseControl.damping.x);
         mouseInput.y = Mathf.Lerp(mouseInput.y, playerInput.MouseInput.y, 1f / mouseControl.damping.y);
@@ -63,6 +73,22 @@ public class Player : MonoBehaviour {
         transform.Rotate(Vector3.up * mouseInput.x * mouseControl.sensitivity.x);
 
         crosshair.LookHeight(mouseInput.y * mouseControl.sensitivity.y);
+    }
 
+    void Move()
+    {
+        float moveSpeed = runSpeed;
+
+        if (playerInput.isWalking)
+            moveSpeed = walkSpeed;
+
+        if (playerInput.isCrouched)
+            moveSpeed = crouchSpeed;
+
+        if (playerInput.isSprinting)
+            moveSpeed = sprintSpeed;
+
+        Vector2 direction = new Vector2(playerInput.Vertical * moveSpeed, playerInput.Horizontal * moveSpeed);
+        moveController.Move(direction);
     }
 }

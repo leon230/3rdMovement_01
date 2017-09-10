@@ -34,6 +34,7 @@ public class Crosshair : MonoBehaviour {
     public void Start()
     {
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
 }
