@@ -13,4 +13,13 @@ public class AssaultRifle : Shooter {
 
         }
     }
+
+    public void Update()
+    {
+        if (GameManager.instance.inputController.reload)
+        {
+            Reload();
+        }
+    }
+
 }

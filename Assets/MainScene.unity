@@ -499,7 +499,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb7a9d700ca3544085770ef3a089e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 10
+  hitPoints: 5
+  inSeconds: 3
 --- !u!23 &1107719417
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -732,6 +733,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2004536966}
   - component: {fileID: 2004536965}
+  - component: {fileID: 2004536967}
   m_Layer: 0
   m_Name: AssaultRifle
   m_TagString: Untagged
@@ -770,6 +772,21 @@ Transform:
   m_Father: {fileID: 45688807}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2004536967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2004536964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52b161720f7eddc4fb60bfde94e81196, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAmmo: 10
+  reloadTime: 3
+  clipSize: 20
+  shotsFiredInClip: 0
 --- !u!4 &2062447644 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400122, guid: 26b8b126074e5ee4fb157ec365a868ae, type: 3}

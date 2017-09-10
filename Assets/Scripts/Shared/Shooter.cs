@@ -10,6 +10,8 @@ public class Shooter : MonoBehaviour {
     [HideInInspector]
     public Transform muzzle;
 
+    private WeaponReloader reloader;
+
     float nextFireAllowed;
 
     [HideInInspector]
@@ -19,6 +21,16 @@ public class Shooter : MonoBehaviour {
     private void Awake()
     {
         muzzle = transform.Find(gameConstants.muzzle);
+
+        reloader = GetComponent<WeaponReloader>();
+    }
+
+    public void Reload()
+    {
+        if (reloader == null)
+            return;
+
+        reloader.Reload();
     }
 
     public virtual void Fire()
@@ -27,8 +39,16 @@ public class Shooter : MonoBehaviour {
         canFire = false;
 
         if (Time.time < nextFireAllowed)
-        {
             return;
+        if (reloader != null)
+        {
+            if (reloader.IsReloading)
+                return;
+            if (reloader.RoundsRemainigInClip == 0)
+                return;
+
+            reloader.TakeFromClip(1);
+
         }
 
         nextFireAllowed = Time.time + RateOfFire;
